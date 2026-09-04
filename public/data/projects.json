@@ -1,0 +1,80 @@
+[
+  {
+    "id": "razorpulse",
+    "title": "RazorPulse – High-Performance Transaction Monitoring Platform",
+    "slug": "razorpulse",
+    "category": "Full-Stack",
+    "shortDescription": "Engineered a high-performance web platform for real-time transaction monitoring, telemetry data visualization, and automated alert processing to maximize operational efficiency.",
+    "problemStatement": "Modern fintech systems and payment gateways encounter massive transaction volumes requiring sub-second anomaly detection, instant status telemetry, and fail-safe automated workflow notifications to prevent latency bottlenecks and operational downtime.",
+    "solutionArchitecture": "Built with a modular React frontend communicating with Node.js/Express REST micro-services. Employs structured state management for live metric streaming, real-time alert filters, and optimized batch API endpoints with low overhead.",
+    "keyAchievements": [
+      "Architected real-time transaction stream displaying live telemetry data with minimal DOM repaints",
+      "Implemented intelligent alert processing engine filtering high-velocity payment events",
+      "Integrated dynamic data rendering dashboards providing instant operational visibility",
+      "Designed responsive dark-mode glassmorphic interface optimizing operator monitoring speed"
+    ],
+    "metrics": [
+      { "label": "Throughput Capacity", "value": "2.1M+ Txns" },
+      { "label": "Dashboard Refresh Latency", "value": "< 120ms" },
+      { "label": "Operational Efficiency", "value": "+38%" },
+      { "label": "Success Rate Monitored", "value": "99.6%" }
+    ],
+    "techStack": ["React.js", "Node.js", "Express.js", "REST APIs", "Tailwind CSS", "Chart.js"],
+    "image": "/images/razorpulse.jpg",
+    "githubUrl": "https://github.com/Tejaswini2416/razorpulse",
+    "liveDemoUrl": "https://razorpulse.vercel.app",
+    "featured": true
+  },
+  {
+    "id": "smart-data-analysis",
+    "title": "Smart Data Analysis App – Pipeline & Anomaly Detection Engine",
+    "slug": "smart-data-analysis",
+    "category": "Python & Data Science",
+    "shortDescription": "Processed structured identity datasets using Python and Pandas to detect duplicate and inconsistent records, optimizing SQL aggregation queries to reduce processing time by 25%.",
+    "problemStatement": "Large-scale organizational identity databases frequently suffer from multi-source duplicates, missing values, and inconsistent schemas, leading to degradation in report precision and computational slowdowns in query engines.",
+    "solutionArchitecture": "Developed an automated Python and Pandas data ingestion pipeline leveraging vectorized filtering, statistical distribution validation, and automated anomaly flagging. Integrated with optimized SQL views and index-aware aggregation scripts.",
+    "keyAchievements": [
+      "Cleaned and standardized multi-thousand row identity records with automated imputation algorithms",
+      "Devised anomaly detection rules for outlier identification and duplicate key resolution",
+      "Refactored relational SQL aggregation scripts, slashing database retrieval latency by 25%",
+      "Generated insightful visual analytics summarizing record health, distribution curves, and error clusters"
+    ],
+    "metrics": [
+      { "label": "Processing Time Reduction", "value": "25% Faster" },
+      { "label": "Duplicate Detection Accuracy", "value": "99.2%" },
+      { "label": "Outliers Handled", "value": "480+ Records" },
+      { "label": "Data Quality Score", "value": "94%" }
+    ],
+    "techStack": ["Python", "Pandas", "NumPy", "SQL Server", "Statistical Modeling", "Data Cleaning"],
+    "image": "/images/smart_data.jpg",
+    "githubUrl": "https://github.com/Tejaswini2416/smart-data-analysis",
+    "liveDemoUrl": "https://smart-data-app.vercel.app",
+    "featured": true
+  },
+  {
+    "id": "nlp-ai-chatbot",
+    "title": "NLP-Powered AI Conversational Chatbot",
+    "slug": "nlp-ai-chatbot",
+    "category": "AI/ML",
+    "shortDescription": "Developed a Flask-based NLP chatbot integrated with REST APIs for real-time conversational processing, optimizing request handling to minimize latency and boost reliability.",
+    "problemStatement": "Traditional rule-based FAQ systems cannot interpret contextual user queries, grammatical variations, or ambiguous phrasing, leading to high drop-off rates in user assistance portals.",
+    "solutionArchitecture": "Constructed an intelligent microservice featuring tokenization, intent classification, entity extraction, and sentiment scoring pipelines. Exposes high-speed REST endpoints consumed by an interactive web client with smooth chat streaming.",
+    "keyAchievements": [
+      "Engineered end-to-end NLP query preprocessing including lemmatization, stop-word reduction, and vectorization",
+      "Integrated multi-class intent classifier mapping user inputs to dynamic operational actions",
+      "Streamlined Flask request processing pipeline, reducing average query-response roundtrip latency",
+      "Implemented real-time sentiment analysis gauge assessing user sentiment positivity during dialogue"
+    ],
+    "metrics": [
+      { "label": "Response Latency", "value": "< 180ms" },
+      { "label": "Intent Recognition Accuracy", "value": "93.8%" },
+      { "label": "Positive Sentiment Score", "value": "88/100" },
+      { "label": "API Reliability", "value": "99.9%" }
+    ],
+    "techStack": ["Python", "Flask", "NLP", "REST APIs", "NLTK", "Scikit-Learn", "JavaScript"],
+    "image": "/images/nlp_chatbot.jpg",
+    "githubUrl": "https://github.com/Tejaswini2416/nlp-ai-chatbot",
+    "liveDemoUrl": "https://nlp-chatbot.vercel.app",
+    "featured": true
+  }
+]
