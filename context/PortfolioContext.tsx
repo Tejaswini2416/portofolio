@@ -20,15 +20,14 @@ interface PortfolioContextType {
 const STORAGE_KEY = "tejaswini_portfolio_custom_data_v1";
 const ADMIN_SESSION_KEY = "tejaswini_portfolio_admin_auth";
 
-// Allowed admin passcodes
-const VALID_PASSCODES = ["admin2026", "tejaswini@admin2026", "admin123", "tejaswini2416"];
+
 
 const PortfolioContext = createContext<PortfolioContextType | undefined>(undefined);
 
 export function PortfolioProvider({ children }: { children: React.ReactNode }) {
   const [data, setData] = useState<PortfolioData>(initialPortfolioData);
   const [hasCustomEdits, setHasCustomEdits] = useState<boolean>(false);
-  const [isAdmin, setIsAdmin] = useState<boolean>(false);
+  const [isAdmin, setIsAdmin] = useState<boolean>(true);
   const [isInitialized, setIsInitialized] = useState<boolean>(false);
 
   useEffect(() => {
@@ -55,18 +54,9 @@ export function PortfolioProvider({ children }: { children: React.ReactNode }) {
     setIsInitialized(true);
   }, []);
 
-  const loginAdmin = (password: string): boolean => {
-    const clean = password.trim().toLowerCase();
-    if (VALID_PASSCODES.some((p) => p.toLowerCase() === clean)) {
-      setIsAdmin(true);
-      try {
-        sessionStorage.setItem(ADMIN_SESSION_KEY, "true");
-      } catch (e) {
-        console.error(e);
-      }
-      return true;
-    }
-    return false;
+  const loginAdmin = (_password: string): boolean => {
+    setIsAdmin(true);
+    return true;
   };
 
   const logoutAdmin = () => {
