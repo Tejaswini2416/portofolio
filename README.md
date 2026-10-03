@@ -1,4 +1,4 @@
-# ?? Tejaswini Kummari � Personal Portfolio
+# 🚀 Tejaswini Kummari — Personal Portfolio
 
 <div align="center">
 
@@ -8,32 +8,33 @@
 ![Framer Motion](https://img.shields.io/badge/Framer_Motion-latest-EF008F?style=for-the-badge&logo=framer)
 ![Vercel](https://img.shields.io/badge/Deployed_on-Vercel-000000?style=for-the-badge&logo=vercel)
 
-**A high-converting, interactive, and visually stunning personal portfolio website**
-Built for Tejaswini Kummari � CSE Graduate specializing in AI/ML, Full-Stack Development & DevOps.
+**A high-converting, interactive, and visually stunning personal portfolio website.**  
+Built for Tejaswini Kummari — CSE Graduate specializing in AI/ML, Full-Stack Development & DevOps.
 
-[?? Live Demo](https://tejaswini-portfolio.vercel.app) � [?? GitHub Repo](https://github.com/Tejaswini2416/portofolio) � [?? Contact](mailto:tejaswinikummari17@gmail.com)
+[🌐 Live Demo](https://tejaswini-portfolio.vercel.app) · [💻 GitHub Repo](https://github.com/Tejaswini2416/portofolio) · [📧 Contact](mailto:tejaswinikummari17@gmail.com)
 
 </div>
 
 ---
 
-## ? Features
+## ✨ Features
 
-- ?? **Premium Dark UI** � Glassmorphism, neon glow effects, animated gradient rings
-- ??? **Animated Hero Section** � Profile portrait with floating tech badges & pulsing status pill
-- ?? **Projects Showcase** � Filterable project cards with detailed modals (problem, solution, metrics)
-- ??? **Skills Matrix** � Categorized skill grid with icon-based visual representation
-- ?? **Education Timeline** � Interactive vertical timeline with highlights
-- ?? **Certifications Wall** � Verified badge display with credential links
-- ?? **Working Contact Form** � EmailJS-powered, sends directly to tejaswinikummari17@gmail.com
-- ?? **Admin CMS Panel** � Edit projects, profile & content at /admin without touching code
-- ?? **Particle Canvas Background** � Dynamic animated starfield background
-- ?? **Fully Responsive** � Mobile-first design, works on all screen sizes
-- ? **SEO Optimized** � OpenGraph, Twitter card metadata, semantic HTML
+- 🎨 **Premium Dark UI** — Glassmorphism, neon glow effects, animated gradient rings, Safari-compatible blur
+- 🧑‍💻 **Animated Hero Section** — Profile portrait with floating tech badges & pulsing status pill
+- 📂 **Projects Showcase** — Filterable project cards with detailed modals (problem, solution, metrics)
+- 🛠️ **Skills Matrix** — Categorized skill grid with icon-based visual representation
+- 🎓 **Education Timeline** — Interactive vertical timeline with highlights
+- 🏆 **Certifications Wall** — Verified badge display for industry accreditations
+- 📬 **Working Contact Form** — EmailJS-powered, sends directly to tejaswinikummari17@gmail.com
+- 🔐 **Admin CMS Panel** — Edit projects, profile & content at `/admin` without touching code
+- 🌌 **Particle Canvas Background** — Dynamic animated starfield background
+- 📱 **Fully Responsive** — Mobile-first design, works on all screen sizes
+- ⚡ **SEO Optimized** — OpenGraph, Twitter card metadata, semantic HTML
+- 📄 **Direct PDF Resume Download** — Real resume PDF served from `/public`
 
 ---
 
-## ?? Pages
+## 📄 Pages
 
 | Route | Description |
 |---|---|
@@ -41,19 +42,19 @@ Built for Tejaswini Kummari � CSE Graduate specializing in AI/ML, Full-Stack D
 | `/about` | Bio, education timeline, achievements |
 | `/skills` | Full skills matrix by category |
 | `/projects` | All projects with filter by category |
-| `/certifications` | Certification cards with verification links |
+| `/certifications` | Certification cards with verified badge display |
 | `/contact` | Contact form + direct social links |
 | `/admin` | CMS panel to edit portfolio content |
 
 ---
 
-## ??? Tech Stack
+## 🛠️ Tech Stack
 
 | Layer | Technology |
 |---|---|
-| **Framework** | Next.js 16 (App Router) |
+| **Framework** | Next.js 16 (App Router, Turbopack) |
 | **Language** | TypeScript |
-| **Styling** | Tailwind CSS + Custom CSS |
+| **Styling** | Tailwind CSS + Custom CSS (Glassmorphism) |
 | **Animations** | Framer Motion |
 | **Icons** | React Icons |
 | **Email** | EmailJS |
@@ -62,7 +63,7 @@ Built for Tejaswini Kummari � CSE Graduate specializing in AI/ML, Full-Stack D
 
 ---
 
-## ?? Getting Started
+## 🚀 Getting Started
 
 ### Prerequisites
 - Node.js `v18+`
@@ -84,11 +85,11 @@ npm install
 npm run dev
 ```
 
-Open http://localhost:3000 in your browser.
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
 ---
 
-## ?? Available Scripts
+## 📜 Available Scripts
 
 ```bash
 npm run dev      # Start development server (hot reload)
@@ -99,7 +100,7 @@ npm run lint     # Lint the codebase
 
 ---
 
-## ?? Configuration
+## ⚙️ Configuration
 
 ### Contact Form (EmailJS)
 To enable the contact form, update your EmailJS credentials in:
@@ -109,6 +110,13 @@ Set your:
 - `EMAILJS_SERVICE_ID`
 - `EMAILJS_TEMPLATE_ID`
 - `EMAILJS_PUBLIC_KEY`
+
+### Resume PDF
+Place your resume at:
+```
+public/Tejaswini_Kummari_Resume.pdf
+```
+The Download Resume button on the homepage and About page will serve it directly.
 
 ### Updating Portfolio Content
 All portfolio data lives in:
@@ -122,43 +130,44 @@ Or use the built-in **Admin Panel** at `/admin` to edit without touching code.
 
 ---
 
-## ?? Project Structure
+## 📁 Project Structure
 
 ```
 portfolio/
-+-- app/
-�   +-- layout.tsx          # Root layout with SEO metadata
-�   +-- page.tsx            # Homepage (Hero + Featured Projects)
-�   +-- about/              # About page
-�   +-- skills/             # Skills page
-�   +-- projects/           # Projects page
-�   +-- certifications/     # Certifications page
-�   +-- contact/            # Contact page
-�   +-- admin/              # Admin CMS panel
-�   +-- api/contact/        # Email API route
-+-- components/
-�   +-- Navbar.tsx
-�   +-- Footer.tsx
-�   +-- ProjectCard.tsx
-�   +-- ProjectModal.tsx
-�   +-- SkillIcon.tsx
-�   +-- ContactForm.tsx
-�   +-- EducationTimeline.tsx
-�   +-- TiltCard.tsx
-�   +-- BackgroundCanvas.tsx
-+-- context/
-�   +-- PortfolioContext.tsx # Global state for portfolio data
-+-- data/
-�   +-- portfolioData.ts    # Static portfolio data
-+-- public/
-    +-- images/             # Profile & project images
-    +-- data/
-        +-- projects.json   # Editable projects data
+├── app/
+│   ├── layout.tsx          # Root layout with SEO metadata
+│   ├── page.tsx            # Homepage (Hero + Featured Projects)
+│   ├── about/              # About page
+│   ├── skills/             # Skills page
+│   ├── projects/           # Projects page
+│   ├── certifications/     # Certifications page
+│   ├── contact/            # Contact page
+│   ├── admin/              # Admin CMS panel
+│   └── api/contact/        # Email API route
+├── components/
+│   ├── Navbar.tsx
+│   ├── Footer.tsx
+│   ├── ProjectCard.tsx
+│   ├── ProjectModal.tsx
+│   ├── SkillIcon.tsx
+│   ├── ContactForm.tsx
+│   ├── EducationTimeline.tsx
+│   ├── TiltCard.tsx
+│   └── BackgroundCanvas.tsx
+├── context/
+│   └── PortfolioContext.tsx # Global state for portfolio data
+├── data/
+│   └── portfolioData.ts    # Static portfolio data
+└── public/
+    ├── Tejaswini_Kummari_Resume.pdf
+    ├── images/             # Profile & project images
+    └── data/
+        └── projects.json   # Editable projects data
 ```
 
 ---
 
-## ?? Deployment
+## 🌍 Deployment
 
 This project is deployed on **Vercel** with zero-config setup.
 
@@ -170,15 +179,15 @@ npm run build
 npx vercel --prod
 ```
 
-Or connect your GitHub repo to https://vercel.com for automatic deployments on every push.
+Or connect your GitHub repo to [vercel.com](https://vercel.com) for automatic deployments on every push to `main`.
 
 ---
 
-## ????? Author
+## 👩‍💻 Author
 
-**Tejaswini Kummari**
-Computer Science & Engineering Graduate
-Specializing in AI/ML � Full-Stack Development � DevOps
+**Tejaswini Kummari**  
+Computer Science & Engineering Graduate  
+Specializing in AI/ML · Full-Stack Development · DevOps
 
 [![GitHub](https://img.shields.io/badge/GitHub-Tejaswini2416-181717?style=flat&logo=github)](https://github.com/Tejaswini2416)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-tejaswini--kummari-0A66C2?style=flat&logo=linkedin)](https://www.linkedin.com/in/tejaswini-kummari-192425313/)
@@ -186,6 +195,6 @@ Specializing in AI/ML � Full-Stack Development � DevOps
 
 ---
 
-## ?? License
+## 📝 License
 
 This project is open source and available under the [MIT License](LICENSE).
