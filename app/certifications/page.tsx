@@ -2,7 +2,7 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { FiAward, FiCheckCircle, FiExternalLink, FiShield, FiCalendar, FiBriefcase } from "react-icons/fi";
+import { FiAward, FiCheckCircle, FiShield, FiCalendar, FiBriefcase } from "react-icons/fi";
 import { SiPython } from "react-icons/si";
 import { FaCogs } from "react-icons/fa";
 import { usePortfolio } from "@/context/PortfolioContext";
@@ -104,17 +104,7 @@ export default function CertificationsPage() {
                   </div>
                 </div>
 
-                {cert.credentialUrl && cert.credentialUrl !== "#" && (
-                  <a
-                    href={cert.credentialUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 text-xs font-mono text-cyan-400 hover:text-cyan-300 transition-colors"
-                  >
-                    <span>Inspect Credential</span>
-                    <FiExternalLink className="w-3 h-3" />
-                  </a>
-                )}
+
               </div>
             </TiltCard>
           </motion.div>

@@ -5,22 +5,30 @@ import { initialPortfolioData, PortfolioData, Project } from "@/data/portfolioDa
 
 interface PortfolioContextType {
   data: PortfolioData;
-  addProject: (project: Omit<Project, "id" | "slug">) => void;
-  updateProject: (id: string, updated: Partial<Project>) => void;
-  deleteProject: (id: string) => void;
-  updatePersonalInfo: (info: Partial<PortfolioData["personal"]>) => void;
-  resetToDefaults: () => void;
+  addProject: (project: Omit<Project, "id" | "slug">) => boolean;
+  updateProject: (id: string, updated: Partial<Project>) => boolean;
+  deleteProject: (id: string) => boolean;
+  updatePersonalInfo: (info: Partial<PortfolioData["personal"]>) => boolean;
+  resetToDefaults: () => boolean;
   exportJSON: () => void;
   hasCustomEdits: boolean;
+  isAdmin: boolean;
+  loginAdmin: (password: string) => boolean;
+  logoutAdmin: () => void;
 }
 
 const STORAGE_KEY = "tejaswini_portfolio_custom_data_v1";
+const ADMIN_SESSION_KEY = "tejaswini_portfolio_admin_auth";
+
+// Allowed admin passcodes
+const VALID_PASSCODES = ["admin2026", "tejaswini@admin2026", "admin123", "tejaswini2416"];
 
 const PortfolioContext = createContext<PortfolioContextType | undefined>(undefined);
 
 export function PortfolioProvider({ children }: { children: React.ReactNode }) {
   const [data, setData] = useState<PortfolioData>(initialPortfolioData);
   const [hasCustomEdits, setHasCustomEdits] = useState<boolean>(false);
+  const [isAdmin, setIsAdmin] = useState<boolean>(false);
   const [isInitialized, setIsInitialized] = useState<boolean>(false);
 
   useEffect(() => {
@@ -34,8 +42,41 @@ export function PortfolioProvider({ children }: { children: React.ReactNode }) {
     } catch (e) {
       console.error("Failed to load custom portfolio data from localStorage", e);
     }
+
+    try {
+      const adminAuth = sessionStorage.getItem(ADMIN_SESSION_KEY);
+      if (adminAuth === "true") {
+        setIsAdmin(true);
+      }
+    } catch (e) {
+      console.error("Failed to check admin session", e);
+    }
+
     setIsInitialized(true);
   }, []);
+
+  const loginAdmin = (password: string): boolean => {
+    const clean = password.trim().toLowerCase();
+    if (VALID_PASSCODES.some((p) => p.toLowerCase() === clean)) {
+      setIsAdmin(true);
+      try {
+        sessionStorage.setItem(ADMIN_SESSION_KEY, "true");
+      } catch (e) {
+        console.error(e);
+      }
+      return true;
+    }
+    return false;
+  };
+
+  const logoutAdmin = () => {
+    setIsAdmin(false);
+    try {
+      sessionStorage.removeItem(ADMIN_SESSION_KEY);
+    } catch (e) {
+      console.error(e);
+    }
+  };
 
   const saveToStorage = (newData: PortfolioData) => {
     setData(newData);
@@ -47,7 +88,11 @@ export function PortfolioProvider({ children }: { children: React.ReactNode }) {
     }
   };
 
-  const addProject = (projectData: Omit<Project, "id" | "slug">) => {
+  const addProject = (projectData: Omit<Project, "id" | "slug">): boolean => {
+    if (!isAdmin) {
+      console.warn("Unauthorized attempt to add project. Admin login required.");
+      return false;
+    }
     const slug = projectData.title
       .toLowerCase()
       .replace(/[^a-z0-9]+/g, "-")
@@ -62,31 +107,51 @@ export function PortfolioProvider({ children }: { children: React.ReactNode }) {
       projects: [newProject, ...data.projects],
     };
     saveToStorage(updated);
+    return true;
   };
 
-  const updateProject = (id: string, updatedFields: Partial<Project>) => {
+  const updateProject = (id: string, updatedFields: Partial<Project>): boolean => {
+    if (!isAdmin) {
+      console.warn("Unauthorized attempt to update project. Admin login required.");
+      return false;
+    }
     const updatedProjects = data.projects.map((p) =>
       p.id === id ? { ...p, ...updatedFields } : p
     );
     const updated = { ...data, projects: updatedProjects };
     saveToStorage(updated);
+    return true;
   };
 
-  const deleteProject = (id: string) => {
+  const deleteProject = (id: string): boolean => {
+    if (!isAdmin) {
+      console.warn("Unauthorized attempt to delete project. Admin login required.");
+      return false;
+    }
     const updatedProjects = data.projects.filter((p) => p.id !== id);
     const updated = { ...data, projects: updatedProjects };
     saveToStorage(updated);
+    return true;
   };
 
-  const updatePersonalInfo = (info: Partial<PortfolioData["personal"]>) => {
+  const updatePersonalInfo = (info: Partial<PortfolioData["personal"]>): boolean => {
+    if (!isAdmin) {
+      console.warn("Unauthorized attempt to update personal info. Admin login required.");
+      return false;
+    }
     const updated = {
       ...data,
       personal: { ...data.personal, ...info },
     };
     saveToStorage(updated);
+    return true;
   };
 
-  const resetToDefaults = () => {
+  const resetToDefaults = (): boolean => {
+    if (!isAdmin) {
+      console.warn("Unauthorized attempt to reset defaults. Admin login required.");
+      return false;
+    }
     try {
       localStorage.removeItem(STORAGE_KEY);
     } catch (e) {
@@ -94,6 +159,7 @@ export function PortfolioProvider({ children }: { children: React.ReactNode }) {
     }
     setData(initialPortfolioData);
     setHasCustomEdits(false);
+    return true;
   };
 
   const exportJSON = () => {
@@ -119,6 +185,9 @@ export function PortfolioProvider({ children }: { children: React.ReactNode }) {
         resetToDefaults,
         exportJSON,
         hasCustomEdits,
+        isAdmin,
+        loginAdmin,
+        logoutAdmin,
       }}
     >
       {children}

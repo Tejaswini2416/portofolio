@@ -79,15 +79,13 @@ export default function HomePage() {
               </Link>
 
               <a
-                href="#download-resume"
-                onClick={(e) => {
-                  e.preventDefault();
-                  alert("Tejaswini's verified resume is packaged. Generating direct download link...");
-                  window.open("https://github.com/Tejaswini2416", "_blank");
-                }}
-                className="flex items-center gap-2 px-5 py-3 rounded-xl text-sm font-semibold text-zinc-300 hover:text-white bg-white/5 hover:bg-white/10 border border-white/10 transition-all uppercase tracking-wider"
+                href="/Tejaswini_Kummari_Resume.pdf"
+                download="Tejaswini_Kummari_Resume.pdf"
+                className="flex items-center gap-2 px-5 py-3 rounded-xl text-sm font-semibold text-zinc-300 hover:text-white bg-white/5 hover:bg-white/10 border border-white/10 transition-all uppercase tracking-wider group"
+                id="hero-download-resume"
+                title="Download Tejaswini Kummari's Verified PDF Resume"
               >
-                <FiDownload className="w-4 h-4 text-cyan-400" />
+                <FiDownload className="w-4 h-4 text-cyan-400 group-hover:translate-y-0.5 transition-transform" />
                 <span>Download Resume</span>
               </a>
 

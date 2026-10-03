@@ -4,8 +4,9 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
-import { FiMenu, FiX, FiGithub, FiLinkedin, FiMail, FiEdit3 } from "react-icons/fi";
+import { FiMenu, FiX, FiGithub, FiLinkedin, FiMail, FiEdit3, FiFileText, FiLock, FiShield } from "react-icons/fi";
 import { FaLaptopCode } from "react-icons/fa";
+import { usePortfolio } from "@/context/PortfolioContext";
 
 const navItems = [
   { name: "Home", href: "/" },
@@ -18,6 +19,7 @@ const navItems = [
 
 export default function Navbar() {
   const pathname = usePathname();
+  const { isAdmin } = usePortfolio();
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -63,7 +65,7 @@ export default function Navbar() {
               <Link
                 key={item.href}
                 href={item.href}
-                className={`relative px-4 py-1.5 text-sm font-medium transition-colors rounded-full ${
+                className={`relative px-3.5 py-1.5 text-xs lg:text-sm font-medium transition-colors rounded-full ${
                   isActive ? "text-cyan-300 font-semibold" : "text-zinc-300 hover:text-white"
                 }`}
               >
@@ -84,11 +86,15 @@ export default function Navbar() {
         <div className="hidden lg:flex items-center gap-3">
           <Link
             href="/admin"
-            className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-mono text-cyan-400/90 bg-cyan-950/40 border border-cyan-500/30 rounded-lg hover:bg-cyan-900/40 hover:text-cyan-300 transition-all hover:scale-105"
-            title="Manage Projects & Content (CMS)"
+            className={`flex items-center gap-1.5 px-3 py-1.5 text-xs font-mono rounded-lg transition-all hover:scale-105 border ${
+              isAdmin
+                ? "text-emerald-400 bg-emerald-950/40 border-emerald-500/40 shadow-sm shadow-emerald-500/20"
+                : "text-cyan-400/90 bg-cyan-950/40 border-cyan-500/30 hover:bg-cyan-900/40 hover:text-cyan-300"
+            }`}
+            title={isAdmin ? "Admin Mode Active (Manage CMS)" : "Admin CMS Login"}
           >
-            <FiEdit3 className="w-3.5 h-3.5" />
-            <span>CMS Admin</span>
+            {isAdmin ? <FiShield className="w-3.5 h-3.5 text-emerald-400" /> : <FiLock className="w-3.5 h-3.5" />}
+            <span>{isAdmin ? "Admin (Active)" : "CMS Admin"}</span>
           </Link>
 
           <a
@@ -122,10 +128,14 @@ export default function Navbar() {
         <div className="flex md:hidden items-center gap-2">
           <Link
             href="/admin"
-            className="p-2 text-xs font-mono text-cyan-400 bg-cyan-950/40 border border-cyan-500/30 rounded-lg"
+            className={`p-2 text-xs font-mono rounded-lg border ${
+              isAdmin
+                ? "text-emerald-400 bg-emerald-950/40 border-emerald-500/40"
+                : "text-cyan-400 bg-cyan-950/40 border-cyan-500/30"
+            }`}
             title="CMS Admin"
           >
-            <FiEdit3 className="w-4 h-4" />
+            {isAdmin ? <FiShield className="w-4 h-4" /> : <FiLock className="w-4 h-4" />}
           </Link>
           <button
             onClick={() => setIsOpen(!isOpen)}

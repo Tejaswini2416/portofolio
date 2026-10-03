@@ -3,14 +3,14 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { FiFolder, FiSearch, FiPlusCircle, FiSliders } from "react-icons/fi";
+import { FiFolder, FiSearch, FiPlusCircle, FiSliders, FiLock, FiShield } from "react-icons/fi";
 import { usePortfolio } from "@/context/PortfolioContext";
 import ProjectCard from "@/components/ProjectCard";
 import ProjectModal from "@/components/ProjectModal";
 import { Project } from "@/data/portfolioData";
 
 export default function ProjectsPage() {
-  const { data } = usePortfolio();
+  const { data, isAdmin } = usePortfolio();
   const { projects } = data;
   const [selectedCategory, setSelectedCategory] = useState<string>("All");
   const [searchQuery, setSearchQuery] = useState<string>("");
@@ -48,10 +48,24 @@ export default function ProjectsPage() {
         {/* CMS Quick Link */}
         <Link
           href="/admin"
-          className="self-start md:self-auto flex items-center gap-2 px-4 py-2.5 rounded-xl bg-cyan-950/40 border border-cyan-500/30 text-cyan-300 hover:bg-cyan-900/40 text-xs font-mono transition-all hover:scale-105"
+          className={`self-start md:self-auto flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-mono transition-all hover:scale-105 border ${
+            isAdmin
+              ? "bg-emerald-950/40 border-emerald-500/40 text-emerald-300 hover:bg-emerald-900/50"
+              : "bg-cyan-950/40 border-cyan-500/30 text-cyan-300 hover:bg-cyan-900/40"
+          }`}
+          title={isAdmin ? "Manage projects in CMS (Admin Unlocked)" : "Admin Authentication Required to Edit"}
         >
-          <FiPlusCircle className="w-4 h-4" />
-          <span>Add / Edit in CMS</span>
+          {isAdmin ? (
+            <>
+              <FiShield className="w-4 h-4 text-emerald-400" />
+              <span>CMS (Admin Active)</span>
+            </>
+          ) : (
+            <>
+              <FiLock className="w-4 h-4 text-cyan-400" />
+              <span>Admin CMS (Locked)</span>
+            </>
+          )}
         </Link>
       </div>
 

@@ -21,13 +21,13 @@
     ],
     "techStack": ["React.js", "Node.js", "Express.js", "REST APIs", "Tailwind CSS", "Chart.js"],
     "image": "/images/razorpulse.jpg",
-    "githubUrl": "https://github.com/Tejaswini2416/razorpulse",
+    "githubUrl": "https://github.com/Tejaswini2416/razorpulse_agent",
     "liveDemoUrl": "https://razorpulse.vercel.app",
     "featured": true
   },
   {
     "id": "smart-data-analysis",
-    "title": "Smart Data Analysis App – Pipeline & Anomaly Detection Engine",
+    "title": "Smart Aadhaar Analytics Platform – Pipeline & Anomaly Engine",
     "slug": "smart-data-analysis",
     "category": "Python & Data Science",
     "shortDescription": "Processed structured identity datasets using Python and Pandas to detect duplicate and inconsistent records, optimizing SQL aggregation queries to reduce processing time by 25%.",
@@ -45,10 +45,10 @@
       { "label": "Outliers Handled", "value": "480+ Records" },
       { "label": "Data Quality Score", "value": "94%" }
     ],
-    "techStack": ["Python", "Pandas", "NumPy", "SQL Server", "Statistical Modeling", "Data Cleaning"],
+    "techStack": ["Python", "Pandas", "NumPy", "SQL Server", "Streamlit", "Statistical Modeling", "Data Cleaning"],
     "image": "/images/smart_data.jpg",
-    "githubUrl": "https://github.com/Tejaswini2416/smart-data-analysis",
-    "liveDemoUrl": "https://smart-data-app.vercel.app",
+    "githubUrl": "https://github.com/Tejaswini2416/Smart-Aadhaar-Analytics-Platform",
+    "liveDemoUrl": "https://smart-aadhaar-analytics-platform-ms7xn6ryqfapoxe9vnaz9d.streamlit.app/",
     "featured": true
   },
   {

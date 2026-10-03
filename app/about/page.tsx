@@ -100,6 +100,14 @@ export default function AboutPage() {
                 >
                   Initiate Discussion
                 </Link>
+                <a
+                  href="/Tejaswini_Kummari_Resume.pdf"
+                  download="Tejaswini_Kummari_Resume.pdf"
+                  className="flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs font-semibold text-zinc-300 hover:text-white bg-white/5 hover:bg-white/10 border border-white/10 transition-colors uppercase tracking-wider"
+                >
+                  <FiDownload className="w-3.5 h-3.5 text-cyan-400" />
+                  <span>Download Resume</span>
+                </a>
                 <Link
                   href="/projects"
                   className="px-5 py-2.5 rounded-xl text-xs font-semibold text-zinc-300 hover:text-white bg-white/5 hover:bg-white/10 border border-white/10 transition-colors uppercase tracking-wider"
