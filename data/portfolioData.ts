@@ -221,16 +221,16 @@ export const initialPortfolioData: PortfolioData = {
       title: "Smart India Hackathon (SIH) Finalist",
       organization: "Smart India Hackathon • Vignana Bharathi Institute of Technology (VBIT)",
       year: "2026",
-      description: "Ranked among the Top 50 finalist teams campus-wide at VBIT out of 200+ competing engineering teams in the Smart India Hackathon internal round, recognized for innovative software architecture, rapid prototyping, and real-world utility.",
+      description: "Ranked among the Top 20 finalist teams campus-wide at VBIT out of 200+ competing engineering teams in the Smart India Hackathon internal round, recognized for innovative software architecture, rapid prototyping, and real-world utility.",
       type: "Hackathon",
-      badge: "Top Teams Finalist • VBIT",
+      badge: "Top 20 Teams Finalist • VBIT",
       stats: [
         { label: "Competing Teams", value: "200+" },
-        { label: "Standing", value: "Top Finalist" },
+        { label: "Standing", value: "Top 20 Teams" },
         { label: "Campus Venue", value: "VBIT Hyderabad" }
       ],
       highlights: [
-        "Earned selection among the top finalist engineering teams out of over 200 competing squads.",
+        "Earned selection among the top 20 finalist engineering teams out of over 200 competing squads.",
         "Engineered and presented a fully functional software prototype under rigorous hackathon time constraints.",
         "Recognized for system feasibility, live prototype walkthroughs, and real-time execution."
       ]

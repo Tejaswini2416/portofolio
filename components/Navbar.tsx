@@ -9,7 +9,7 @@ import { FaLaptopCode } from "react-icons/fa";
 import { usePortfolio } from "@/context/PortfolioContext";
 
 const navItems = [
-  { name: "World Map", href: "/" },
+  { name: "Home", href: "/" },
   { name: "About", href: "/about" },
   { name: "Projects", href: "/projects" },
   { name: "Skills", href: "/skills" },
