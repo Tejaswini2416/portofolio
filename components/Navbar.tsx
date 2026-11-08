@@ -9,11 +9,12 @@ import { FaLaptopCode } from "react-icons/fa";
 import { usePortfolio } from "@/context/PortfolioContext";
 
 const navItems = [
-  { name: "Home", href: "/" },
+  { name: "World Map", href: "/" },
   { name: "About", href: "/about" },
   { name: "Projects", href: "/projects" },
   { name: "Skills", href: "/skills" },
   { name: "Certifications", href: "/certifications" },
+  { name: "Volunteer", href: "/volunteer" },
   { name: "Contact", href: "/contact" },
 ];
 
@@ -33,9 +34,8 @@ export default function Navbar() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? "glass-nav py-3 shadow-2xl shadow-cyan-950/20" : "bg-transparent py-5"
-      }`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? "glass-nav py-3 shadow-2xl shadow-cyan-950/20" : "bg-transparent py-5"
+        }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
         {/* Logo / Brand */}
@@ -65,9 +65,8 @@ export default function Navbar() {
               <Link
                 key={item.href}
                 href={item.href}
-                className={`relative px-3.5 py-1.5 text-xs lg:text-sm font-medium transition-colors rounded-full ${
-                  isActive ? "text-cyan-300 font-semibold" : "text-zinc-300 hover:text-white"
-                }`}
+                className={`relative px-3.5 py-1.5 text-xs lg:text-sm font-medium transition-colors rounded-full ${isActive ? "text-cyan-300 font-semibold" : "text-zinc-300 hover:text-white"
+                  }`}
               >
                 {isActive && (
                   <motion.div
@@ -86,11 +85,10 @@ export default function Navbar() {
         <div className="hidden lg:flex items-center gap-3">
           <Link
             href="/admin"
-            className={`flex items-center gap-1.5 px-3 py-1.5 text-xs font-mono rounded-lg transition-all hover:scale-105 border ${
-              isAdmin
-                ? "text-emerald-400 bg-emerald-950/40 border-emerald-500/40 shadow-sm shadow-emerald-500/20"
-                : "text-cyan-400/90 bg-cyan-950/40 border-cyan-500/30 hover:bg-cyan-900/40 hover:text-cyan-300"
-            }`}
+            className={`flex items-center gap-1.5 px-3 py-1.5 text-xs font-mono rounded-lg transition-all hover:scale-105 border ${isAdmin
+              ? "text-emerald-400 bg-emerald-950/40 border-emerald-500/40 shadow-sm shadow-emerald-500/20"
+              : "text-cyan-400/90 bg-cyan-950/40 border-cyan-500/30 hover:bg-cyan-900/40 hover:text-cyan-300"
+              }`}
             title={isAdmin ? "Admin Mode Active (Manage CMS)" : "Admin CMS Login"}
           >
             {isAdmin ? <FiShield className="w-3.5 h-3.5 text-emerald-400" /> : <FiLock className="w-3.5 h-3.5" />}
@@ -128,11 +126,10 @@ export default function Navbar() {
         <div className="flex md:hidden items-center gap-2">
           <Link
             href="/admin"
-            className={`p-2 text-xs font-mono rounded-lg border ${
-              isAdmin
-                ? "text-emerald-400 bg-emerald-950/40 border-emerald-500/40"
-                : "text-cyan-400 bg-cyan-950/40 border-cyan-500/30"
-            }`}
+            className={`p-2 text-xs font-mono rounded-lg border ${isAdmin
+              ? "text-emerald-400 bg-emerald-950/40 border-emerald-500/40"
+              : "text-cyan-400 bg-cyan-950/40 border-cyan-500/30"
+              }`}
             title="CMS Admin"
           >
             {isAdmin ? <FiShield className="w-4 h-4" /> : <FiLock className="w-4 h-4" />}
@@ -164,11 +161,10 @@ export default function Navbar() {
                     key={item.href}
                     href={item.href}
                     onClick={() => setIsOpen(false)}
-                    className={`px-4 py-2.5 rounded-xl text-sm font-medium transition-all ${
-                      isActive
-                        ? "bg-gradient-to-r from-cyan-500/20 to-indigo-500/20 text-cyan-300 border border-cyan-500/30"
-                        : "text-zinc-300 hover:bg-white/5 hover:text-white"
-                    }`}
+                    className={`px-4 py-2.5 rounded-xl text-sm font-medium transition-all ${isActive
+                      ? "bg-gradient-to-r from-cyan-500/20 to-indigo-500/20 text-cyan-300 border border-cyan-500/30"
+                      : "text-zinc-300 hover:bg-white/5 hover:text-white"
+                      }`}
                   >
                     {item.name}
                   </Link>

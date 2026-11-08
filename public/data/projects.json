@@ -1,5 +1,32 @@
 [
   {
+    "id": "aira-chatbot",
+    "title": "Aira — Personalized Multi-Provider AI Chatbot",
+    "slug": "aira-chatbot",
+    "category": "Full-Stack",
+    "shortDescription": "Full-Stack Engineer & AI Developer | Multi-LLM orchestration engine (Groq, OpenAI, Gemini, Claude) with high-throughput SSE token streaming, persistent context memory (PostgreSQL + Prisma), interactive voice mode, and glassmorphic UI.",
+    "problemStatement": "Modern AI chat platforms frequently depend on a single model provider, making them vulnerable to API rate limits, provider outages, and vendor lock-in, while lacking cross-session personalization facts and real-time bidirectional audio docks.",
+    "solutionArchitecture": "Engineered with React 18, Vite, and Tailwind CSS on the frontend and Node.js/Express with PostgreSQL and Prisma ORM on the backend. Implemented an adaptive multi-LLM dispatcher with startup health key detection (/api/health), SSE streaming pipeline, persistent memory management (/api/v1/memory), and interactive voice modes via Web Speech and OpenAI audio APIs.",
+    "keyAchievements": [
+      "Multi-Provider AI Architecture: Engineered a resilient, multi-LLM orchestration engine supporting Groq, OpenAI, Google Gemini, and Anthropic Claude with dynamic startup key detection (/api/health) and fallback routing.",
+      "Real-Time Streaming & Interaction: Built a high-throughput SSE (Server-Sent Events) streaming pipeline for token-by-token rendering, featuring chat branching, dynamic message regeneration, and custom TTS synthesis.",
+      "Long-Term Context Memory: Designed a persistent memory management system using PostgreSQL and Prisma ORM to extract, store, and manage user preferences and cross-session facts (/api/v1/memory).",
+      "Interactive Voice & Glassmorphic UI: Developed a glassmorphic interface with Framer Motion visualizers, live audio waveform docks, and interactive voice mode using Web Speech & OpenAI audio APIs.",
+      "Security & Scalability: Secured application endpoints with JWT authentication, bcryptjs password hashing, express-rate-limit, and CORS policies to handle concurrent streaming workloads safely."
+    ],
+    "metrics": [
+      { "label": "AI Orchestration", "value": "Groq, OpenAI, Gemini, Claude" },
+      { "label": "Streaming Pipeline", "value": "SSE Token-by-Token" },
+      { "label": "Memory Layer", "value": "PostgreSQL + Prisma ORM" },
+      { "label": "Voice & Audio", "value": "Web Speech & OpenAI Audio" }
+    ],
+    "techStack": ["React 18", "TypeScript", "Node.js", "Express", "PostgreSQL", "Prisma", "Vite", "Tailwind CSS", "Framer Motion", "JWT", "Server-Sent Events"],
+    "image": "/images/aira_chatbot.png",
+    "githubUrl": "https://github.com/Tejaswini2416/aira_chatbot",
+    "liveDemoUrl": "https://aira-chatbot.vercel.app/",
+    "featured": true
+  },
+  {
     "id": "razorpulse",
     "title": "RazorPulse – High-Performance Transaction Monitoring Platform",
     "slug": "razorpulse",

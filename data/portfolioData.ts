@@ -44,7 +44,26 @@ export interface CertificationItem {
   description: string;
   skills: string[];
   credentialUrl?: string;
+  pdfUrl?: string;
   verified: boolean;
+}
+
+export interface VolunteerImage {
+  url: string;
+  caption: string;
+  category: string;
+}
+
+export interface VolunteerExperience {
+  id: string;
+  role: string;
+  organization: string;
+  period: string;
+  location: string;
+  description: string;
+  highlights: string[];
+  skills: string[];
+  images: VolunteerImage[];
 }
 
 export interface AchievementItem {
@@ -54,6 +73,10 @@ export interface AchievementItem {
   year: string;
   description: string;
   type: "Competition" | "Exam" | "Hackathon";
+  image?: string;
+  badge?: string;
+  stats?: { label: string; value: string }[];
+  highlights?: string[];
 }
 
 export interface PortfolioData {
@@ -85,6 +108,7 @@ export interface PortfolioData {
   }[];
   projects: Project[];
   certifications: CertificationItem[];
+  volunteer?: VolunteerExperience[];
 }
 
 export const initialPortfolioData: PortfolioData = {
@@ -104,7 +128,7 @@ export const initialPortfolioData: PortfolioData = {
       cgpa: "8.77",
       gateRank: "AIR 10,000",
       projectsCompleted: "10+",
-      certificationsCount: "5+",
+      certificationsCount: "4+",
     },
   },
   education: [
@@ -161,8 +185,73 @@ export const initialPortfolioData: PortfolioData = {
       title: "GATE 2026 Qualified (Data Science & AI)",
       organization: "National Coordination Board - GATE",
       year: "2026",
-      description: "Secured All India Rank AIR 10,000 in Graduate Aptitude Test in Engineering for Data Science & Artificial Intelligence, testing deep conceptual mastery across linear algebra, calculus, probability, ML algorithms, and data structures.",
+      description: "Secured All India Rank (AIR) ~10,000 in Graduate Aptitude Test in Engineering for Data Science & Artificial Intelligence, testing deep conceptual mastery across linear algebra, calculus, probability, ML algorithms, and data structures.",
       type: "Exam",
+      badge: "AIR ~10,000 Nationwide",
+      stats: [
+        { label: "Examination", value: "GATE 2026" },
+        { label: "Paper", value: "Data Science & AI (DA)" },
+        { label: "National Standing", value: "AIR ~10,000" }
+      ],
+      highlights: [
+        "Qualified the national benchmark examination in Data Science & Artificial Intelligence.",
+        "Demonstrated rigorous proficiency across linear algebra, probability, machine learning, and algorithm design."
+      ]
+    },
+    {
+      id: "google-student-ambassador",
+      title: "Google Student Ambassador — Team Gemini Lead",
+      organization: "Google & Gemini Student Ambassador Program",
+      year: "2026",
+      description: "Appointed as Google Student Ambassador leading the Gemini initiative campus-wide for 2026. Championing generative AI literacy, orchestrating developer workshops, and driving multimodal AI adoption.",
+      type: "Competition",
+      badge: "Team Gemini Lead 2026",
+      stats: [
+        { label: "Program", value: "Google Ambassador" },
+        { label: "Role", value: "Team Gemini Lead" },
+        { label: "Year", value: "2026" }
+      ],
+      highlights: [
+        "Selected as Google Student Ambassador leading Gemini AI initiatives across campus.",
+        "Spearheading multimodal AI workshops, hands-on hackathons, and student developer cohorts."
+      ]
+    },
+    {
+      id: "sih-hackathon",
+      title: "Smart India Hackathon (SIH) Finalist",
+      organization: "Smart India Hackathon • Vignana Bharathi Institute of Technology (VBIT)",
+      year: "2026",
+      description: "Ranked among the Top 50 finalist teams campus-wide at VBIT out of 200+ competing engineering teams in the Smart India Hackathon internal round, recognized for innovative software architecture, rapid prototyping, and real-world utility.",
+      type: "Hackathon",
+      badge: "Top Teams Finalist • VBIT",
+      stats: [
+        { label: "Competing Teams", value: "200+" },
+        { label: "Standing", value: "Top Finalist" },
+        { label: "Campus Venue", value: "VBIT Hyderabad" }
+      ],
+      highlights: [
+        "Earned selection among the top finalist engineering teams out of over 200 competing squads.",
+        "Engineered and presented a fully functional software prototype under rigorous hackathon time constraints.",
+        "Recognized for system feasibility, live prototype walkthroughs, and real-time execution."
+      ]
+    },
+    {
+      id: "hmel-energy",
+      title: "National Finalist – HMEL Energy Quest",
+      organization: "HPCL-Mittal Energy Limited (HMEL)",
+      year: "2026",
+      description: "Advanced to the national finals in premier engineering competition tackling industrial energy analytics, operational efficiency, and sustainable computational resource allocation.",
+      type: "Competition",
+      badge: "National Finalist",
+      stats: [
+        { label: "Competition", value: "HMEL Energy Quest" },
+        { label: "Stage", value: "National Finals" },
+        { label: "Focus", value: "Energy Analytics" }
+      ],
+      highlights: [
+        "Shortlisted for national finals among competitors from top engineering institutions across India.",
+        "Formulated data-driven models for industrial energy optimization and predictive operational metrics."
+      ]
     },
     {
       id: "ignis-hackathon",
@@ -171,14 +260,15 @@ export const initialPortfolioData: PortfolioData = {
       year: "2025",
       description: "Collaborated in an intensive hackathon challenge developing intelligent solutions integrating machine learning models with immersive extended reality interfaces.",
       type: "Hackathon",
-    },
-    {
-      id: "hmel-energy",
-      title: "Participant – HMEL Energy Quest",
-      organization: "HPCL-Mittal Energy Limited (HMEL)",
-      year: "2026",
-      description: "Participated in national level engineering case competition tackling energy analytics, industrial data optimization, and sustainable computational resource allocation.",
-      type: "Competition",
+      badge: "AI/XR Hackathon",
+      stats: [
+        { label: "Host", value: "Data Vedhi Club" },
+        { label: "Focus", value: "AI + Extended Reality" }
+      ],
+      highlights: [
+        "Rapidly prototyped assistive AI workflows integrated with spatial computing interfaces.",
+        "Coordinated model inference pipelines with frontend interactivity under tight sprint windows."
+      ]
     },
   ],
   skills: [
@@ -246,6 +336,33 @@ export const initialPortfolioData: PortfolioData = {
     },
   ],
   projects: [
+    {
+      id: "aira-chatbot",
+      title: "Aira — Personalized Multi-Provider AI Chatbot",
+      slug: "aira-chatbot",
+      category: "Full-Stack",
+      shortDescription: "Full-Stack Engineer & AI Developer | Multi-LLM orchestration engine (Groq, OpenAI, Gemini, Claude) with high-throughput SSE token streaming, persistent context memory (PostgreSQL + Prisma), interactive voice mode, and glassmorphic UI.",
+      problemStatement: "Modern AI chat platforms frequently depend on a single model provider, making them vulnerable to API rate limits, provider outages, and vendor lock-in, while lacking cross-session personalization facts and real-time bidirectional audio docks.",
+      solutionArchitecture: "Engineered with React 18, Vite, and Tailwind CSS on the frontend and Node.js/Express with PostgreSQL and Prisma ORM on the backend. Implemented an adaptive multi-LLM dispatcher with startup health key detection (/api/health), SSE streaming pipeline, persistent memory management (/api/v1/memory), and interactive voice modes via Web Speech and OpenAI audio APIs.",
+      keyAchievements: [
+        "Multi-Provider AI Architecture: Engineered a resilient, multi-LLM orchestration engine supporting Groq, OpenAI, Google Gemini, and Anthropic Claude with dynamic startup key detection (/api/health) and fallback routing.",
+        "Real-Time Streaming & Interaction: Built a high-throughput SSE (Server-Sent Events) streaming pipeline for token-by-token rendering, featuring chat branching, dynamic message regeneration, and custom TTS synthesis.",
+        "Long-Term Context Memory: Designed a persistent memory management system using PostgreSQL and Prisma ORM to extract, store, and manage user preferences and cross-session facts (/api/v1/memory).",
+        "Interactive Voice & Glassmorphic UI: Developed a glassmorphic interface with Framer Motion visualizers, live audio waveform docks, and interactive voice mode using Web Speech & OpenAI audio APIs.",
+        "Security & Scalability: Secured application endpoints with JWT authentication, bcryptjs password hashing, express-rate-limit, and CORS policies to handle concurrent streaming workloads safely."
+      ],
+      metrics: [
+        { label: "AI Orchestration", value: "Groq, OpenAI, Gemini, Claude" },
+        { label: "Streaming Pipeline", value: "SSE Token-by-Token" },
+        { label: "Memory Layer", value: "PostgreSQL + Prisma ORM" },
+        { label: "Voice & Audio", value: "Web Speech & OpenAI Audio" },
+      ],
+      techStack: ["React 18", "TypeScript", "Node.js", "Express", "PostgreSQL", "Prisma", "Vite", "Tailwind CSS", "Framer Motion", "JWT", "Server-Sent Events"],
+      image: "/images/aira_chatbot.png",
+      githubUrl: "https://github.com/Tejaswini2416/aira_chatbot",
+      liveDemoUrl: "https://aira-chatbot.vercel.app/",
+      featured: true,
+    },
     {
       id: "nexusevents",
       title: "NexusEvents — Student Event Discovery Platform",
@@ -353,6 +470,42 @@ export const initialPortfolioData: PortfolioData = {
   ],
   certifications: [
     {
+      id: "deloitte-simulation",
+      title: "Data Analytics Job Simulation",
+      issuer: "Deloitte Australia (Forage)",
+      date: "May 2026",
+      badgeType: "Virtual Job Simulation",
+      description: "Practical engineering simulation conducting data analysis and forensic technology evaluations on enterprise datasets. Analyzed operational metrics and synthesized executive findings.",
+      skills: ["Data Analysis", "Forensic Technology", "Data Interpretation", "Enterprise Consulting"],
+      credentialUrl: "https://www.theforage.com/simulations/deloitte-au/data-analytics-ey3x",
+      pdfUrl: "/certifications/forage_simulation.pdf",
+      verified: true,
+    },
+    {
+      id: "tata-visualization",
+      title: "Data Visualisation: Empowering Business with Effective Insights",
+      issuer: "Tata (Forage)",
+      date: "May 2026",
+      badgeType: "Virtual Experience",
+      description: "Executive simulation mastering business scenario framing, strategic chart selection, high-impact dashboard design, and effective data storytelling.",
+      skills: ["Data Visualization", "Business Analytics", "Executive Dashboards", "Data Storytelling"],
+      credentialUrl: "https://www.theforage.com/simulations/tata/data-visualisation-p5xo",
+      pdfUrl: "/certifications/data_visualization.pdf",
+      verified: true,
+    },
+    {
+      id: "udemy-genai",
+      title: "Generative AI & ChatGPT Technical Masterclass",
+      issuer: "Udemy",
+      date: "Aug 2026",
+      badgeType: "Technical Course Credential",
+      description: "22.5 hours of verified technical coursework on Generative AI architectures, prompt engineering, multi-modal workflows, and applied LLM automation.",
+      skills: ["Generative AI", "Prompt Engineering", "LLM Workflows", "AI Automation"],
+      credentialUrl: "https://ude.my/UC-8961b8be-2b66-4a83-aea5-adef2c0c5df5",
+      pdfUrl: "/certifications/udemy_certificate.pdf",
+      verified: true,
+    },
+    {
       id: "servicenow-csa",
       title: "ServiceNow Certified System Administrator (CSA)",
       issuer: "ServiceNow",
@@ -363,49 +516,61 @@ export const initialPortfolioData: PortfolioData = {
       credentialUrl: "https://www.servicenow.com",
       verified: true,
     },
+  ],
+  volunteer: [
     {
-      id: "infosys-dsa-python",
-      title: "Data Structures and Algorithms using Python (Part 1 & 2)",
-      issuer: "Infosys Springboard",
-      date: "2024",
-      badgeType: "Course Credential",
-      description: "Comprehensive multi-part mastery covering fundamental to advanced data structures (Linked Lists, Stacks, Queues, Binary Trees, Graphs) and algorithmic paradigms (Dynamic Programming, Greedy Algorithms, Graph Traversals).",
-      skills: ["Python", "Algorithms", "Data Structures", "Big-O Analysis", "Graph Theory"],
-      credentialUrl: "https://infyspringboard.onwingspan.com",
-      verified: true,
+      id: "crowdbridge-lead",
+      role: "Technical Lead — CrowdBridge",
+      organization: "Google Crowdsource",
+      period: "Sept 2026",
+      location: "Vignana Bharathi Institute of Technology (VBIT), Hyderabad",
+      description: "Led technical execution for the CrowdBridge initiative under Google Crowdsource, guiding students to contribute quality dataset annotations and mentoring attendees on open data contribution and machine learning data labeling workflows.",
+      highlights: [
+        "Led technical execution for the CrowdBridge initiative, guiding students to contribute quality dataset annotations for Google Crowdsource.",
+        "Mentored attendees on open data contribution practices and machine learning data labeling workflows.",
+        "Conducted stage sessions and live demonstrations on computer vision and natural language crowdsourcing.",
+        "Facilitated active student participation across multiple academic departments at VBIT."
+      ],
+      skills: ["Google Crowdsource", "Technical Leadership", "ML Data Labeling", "Open Data Contribution", "Public Speaking"],
+      images: [
+        {
+          url: "/images/volunteer/crowdbridge_lead.jpeg",
+          caption: "Technical Lead — Delivering the CrowdBridge initiative presentation on stage at VBIT",
+          category: "CrowdBridge"
+        },
+        {
+          url: "/images/volunteer/crowdbridge_audience.jpeg",
+          caption: "Mentoring attendees and guiding students through Google Crowdsource data labeling",
+          category: "CrowdBridge"
+        }
+      ]
     },
     {
-      id: "genai-analytics",
-      title: "GenAI Powered Data Analytics",
-      issuer: "Industry Accredited Program",
-      date: "2025",
-      badgeType: "Specialization",
-      description: "Advanced training in leveraging Large Language Models, prompt engineering, and generative analytical tools to extract actionable insights, automate exploratory data analysis, and synthesize data narratives.",
-      skills: ["Generative AI", "Data Analytics", "Prompt Engineering", "Predictive Insights", "Python"],
-      credentialUrl: "#",
-      verified: true,
-    },
-    {
-      id: "deloitte-simulation",
-      title: "Technology Consulting Job Simulation",
-      issuer: "Deloitte Australia (Forage)",
-      date: "2024",
-      badgeType: "Virtual Experience",
-      description: "Simulated enterprise client advisory engagement focusing on technology architecture assessment, cloud feasibility evaluation, and technical requirements synthesis.",
-      skills: ["Cloud Architecture", "Technology Consulting", "System Feasibility", "Client Advisory"],
-      credentialUrl: "https://www.theforage.com",
-      verified: true,
-    },
-    {
-      id: "jpmorgan-simulation",
-      title: "Software Engineering Job Simulation",
-      issuer: "JPMorgan Chase & Co. (Forage)",
-      date: "2024",
-      badgeType: "Virtual Experience",
-      description: "Practical engineering simulation interfacing with financial market data feeds, optimizing perspective visualizer modules, and resolving stock price telemetry integration issues.",
-      skills: ["Financial Engineering", "Perspective Data Visualizer", "Python", "Git", "Interface Debugging"],
-      credentialUrl: "https://www.theforage.com",
-      verified: true,
-    },
+      id: "buildathon-crew",
+      role: "Technical Mentor & Crew — Buildathon 2k26",
+      organization: "24-Hour Hackathon",
+      period: "Jan 2026",
+      location: "Vignana Bharathi Institute of Technology (VBIT), Hyderabad",
+      description: "Provided technical guidance and real-time debugging support for hackathon participants over a 24-hour build cycle. Resolved integration bugs across APIs, web frameworks, and database setups for competing teams.",
+      highlights: [
+        "Provided technical guidance and real-time debugging support for hackathon participants over a 24-hour build cycle.",
+        "Resolved integration bugs across APIs, web frameworks, and database setups for competing teams.",
+        "Assisted teams with REST API orchestration, system architecture, and prototype validation.",
+        "Served as technical crew evaluating final stage project demonstrations."
+      ],
+      skills: ["Technical Mentorship", "Real-Time Debugging", "API Integration", "Web Frameworks", "Hackathon Organization"],
+      images: [
+        {
+          url: "/images/volunteer/buildathon_team.jpeg",
+          caption: "Guiding and debugging alongside hackathon teams during the 24-hour build cycle",
+          category: "Buildathon 2k26"
+        },
+        {
+          url: "/images/volunteer/buildathon_presentation.jpeg",
+          caption: "Evaluating stage presentations and prototype demos at Buildathon 2k26",
+          category: "Buildathon 2k26"
+        }
+      ]
+    }
   ],
 };

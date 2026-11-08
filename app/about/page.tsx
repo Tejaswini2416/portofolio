@@ -114,6 +114,18 @@ export default function AboutPage() {
                 >
                   Inspect Projects
                 </Link>
+                <Link
+                  href="/#valor"
+                  className="flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs font-semibold text-amber-300 hover:text-white bg-amber-950/40 hover:bg-amber-900/60 border border-amber-500/30 transition-colors uppercase tracking-wider"
+                >
+                  <span>Hall of Valor (Achievements)</span>
+                </Link>
+                <Link
+                  href="/volunteer"
+                  className="flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs font-semibold text-cyan-300 hover:text-white bg-cyan-950/40 hover:bg-cyan-900/60 border border-cyan-500/30 transition-colors uppercase tracking-wider"
+                >
+                  <span>Volunteer & Leadership</span>
+                </Link>
               </div>
             </div>
           </div>

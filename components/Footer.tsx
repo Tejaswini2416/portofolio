@@ -67,7 +67,11 @@ export default function Footer() {
                   Credentials & Badges
                 </Link>
               </li>
-
+              <li>
+                <Link href="/volunteer" className="hover:text-cyan-400 transition-colors">
+                  Volunteer & Leadership
+                </Link>
+              </li>
               <li>
                 <Link href="/admin" className="text-cyan-400/80 hover:text-cyan-300 font-mono text-xs">
                   CMS Content Manager →
